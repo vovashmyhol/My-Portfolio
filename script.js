@@ -13,12 +13,70 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize Snow / Atmospheric Cold Dust Drift
   initParticles();
 
-  // Initialize Web Audio Ambient Wind Synthesizer
-  initAmbientAudio();
+  // Initialize 2-bar Menu Toggle & Black Overlay
+  initMenu();
 
   // Button hover interactive feedback
   initButtonInteractions();
 });
+
+/* ==========================================================================
+   2-Bar Menu Toggle & Fullscreen Overlay Navigation
+   ========================================================================== */
+
+function initMenu() {
+  const toggleBtn = document.getElementById('menu-toggle');
+  const overlay = document.getElementById('menu-overlay');
+  const menuLinks = document.querySelectorAll('.menu-link');
+
+  if (!toggleBtn || !overlay) return;
+
+  function openMenu() {
+    toggleBtn.classList.add('is-active');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    toggleBtn.classList.remove('is-active');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const isOpen = overlay.classList.contains('is-open');
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  // Close when clicking any link
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      closeMenu();
+    });
+  });
+
+  // Close when clicking on backdrop
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay || e.target.classList.contains('menu-backdrop')) {
+      closeMenu();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
+      closeMenu();
+    }
+  });
+}
 
 /* ==========================================================================
    Snow & Cold Dust Particle Simulation
