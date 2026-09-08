@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 100" preserveAspectRatio="none">
+  <defs>
+    <!-- Organic Dry-brush Chalk & Grunge Filter -->
+    <filter id="brush-roughness" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04 0.08" numOctaves="4" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+      <feMerge>
+        <feMergeNode in="displaced" />
+      </feMerge>
+    </filter>
+    
+    <linearGradient id="brush-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b0b7be" stop-opacity="0.1"/>
+      <stop offset="3%" stop-color="#c8cfd5" stop-opacity="0.6"/>
+      <stop offset="8%" stop-color="#d4dbe1" stop-opacity="0.95"/>
+      <stop offset="15%" stop-color="#dde3e8" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#e3e8ed" stop-opacity="1"/>
+      <stop offset="85%" stop-color="#dce1e6" stop-opacity="1"/>
+      <stop offset="93%" stop-color="#c5ccd3" stop-opacity="0.85"/>
+      <stop offset="98%" stop-color="#b0b7be" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#a4abb2" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Subtle texture overlay -->
+    <pattern id="chalk-grain" width="60" height="60" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="5" r="0.8" fill="#ffffff" opacity="0.15"/>
+      <circle cx="25" cy="18" r="0.6" fill="#000000" opacity="0.07"/>
+      <circle cx="48" cy="10" r="0.7" fill="#ffffff" opacity="0.18"/>
+      <circle cx="15" cy="35" r="0.5" fill="#000000" opacity="0.08"/>
+      <circle cx="38" cy="42" r="0.8" fill="#ffffff" opacity="0.14"/>
+      <circle cx="52" cy="52" r="0.6" fill="#000000" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <g filter="url(#brush-roughness)">
+    <!-- Main solid body with realistic jagged dry-brush bristle ends -->
+    <path fill="url(#brush-grad)" d="
+      M 70,18 
+      C 95,17 140,16 220,17 
+      C 300,16 400,18 450,20
+      C 465,19 480,24 498,28
+      L 512,31
+      L 485,34
+      L 528,37
+      L 490,41
+      L 535,46
+      L 518,48
+      L 538,52
+      L 492,55
+      L 522,59
+      L 480,63
+      L 505,67
+      L 460,71
+      C 440,73 400,74 340,75
+      C 260,76 170,75 110,74
+      C 85,73 70,71 58,68
+      L 35,66
+      L 55,62
+      L 22,58
+      L 48,54
+      L 15,50
+      L 40,46
+      L 26,42
+      L 52,38
+      L 38,34
+      L 60,30
+      C 62,26 65,21 70,18
+      Z
+    "/>
+
+    <!-- Whispy outer bristle streaks matching Hinterland's dry-brush slash -->
+    <!-- Left bristles -->
+    <path d="M 12,49 L 55,49 M 18,44 L 62,44 M 8,52 L 48,52 M 25,37 L 70,37 M 22,61 L 65,61 M 5,47 L 35,47" 
+          stroke="#ced5dc" stroke-width="2.2" stroke-linecap="round" opacity="0.75" />
+    <path d="M 2,50 L 25,50 M 14,41 L 45,41 M 16,56 L 50,56 M 28,32 L 60,32 M 30,65 L 68,65" 
+          stroke="#b8bfc6" stroke-width="1.2" stroke-linecap="round" opacity="0.6" />
+
+    <!-- Right bristles -->
+    <path d="M 480,36 L 535,36 M 475,44 L 538,44 M 482,51 L 534,51 M 470,58 L 526,58 M 465,64 L 512,64 M 485,30 L 520,30" 
+          stroke="#ced5dc" stroke-width="2.2" stroke-linecap="round" opacity="0.75" />
+    <path d="M 490,47 L 542,47 M 495,40 L 536,40 M 488,54 L 532,54 M 475,61 L 518,61 M 490,26 L 515,26" 
+          stroke="#b8bfc6" stroke-width="1.2" stroke-linecap="round" opacity="0.6" />
+    
+    <!-- Fine chalk scratches in body -->
+    <rect x="60" y="16" width="410" height="60" fill="url(#chalk-grain)" />
+  </g>
+</svg>

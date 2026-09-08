@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VOVNX | Coming Soon</title>
+  <meta name="description" content="VOVNX Portfolio - Coming Soon. Atmospheric experience in Hinterland style.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Layer -->
+  <div class="bg-wrapper">
+    <div class="bg-image" style="background-image: url('background.JPG');"></div>
+    <div class="bg-overlay"></div>
+    <div class="bg-vignette"></div>
+    <div class="bg-scanlines"></div>
+  </div>
+
+  <!-- Ambient Particles Canvas (Snow / Cold Dust Drift) -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Main Content Layout -->
+  <div class="site-container">
+    
+    <!-- Top Bar / Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-text">VOVNX</span>
+        <span class="logo-sub">PORTFOLIO</span>
+      </div>
+    </header>
+
+    <!-- Center Hero Section -->
+    <main class="hero">
+      <div class="hero-content">
+        
+        <!-- Decorative Badge -->
+        <div class="badge-container">
+          <span class="badge-line"></span>
+          <span class="badge-text">PROJECT IN PROGRESS</span>
+          <span class="badge-line"></span>
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="title">COMING SOON</h1>
+
+        <!-- The Hinterland Brush-Stroke Navigation Buttons -->
+        <nav class="buttons-group" aria-label="Social Links">
+          
+          <!-- STEAM Button -->
+          <a href="https://steamcommunity.com/id/vovnx/" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="brush-btn steam-btn"
+             aria-label="Steam Profile">
+            <span class="btn-brush-bg"></span>
+            <span class="btn-inner">
+              <img src="steam.png" alt="Steam" class="btn-icon-img">
+              <span class="btn-text">STEAM</span>
+            </span>
+          </a>
+
+          <!-- TELEGRAM Button -->
+          <a href="https://t.me/vovnx" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="brush-btn telegram-btn"
+             aria-label="Telegram Contact">
+            <span class="btn-brush-bg"></span>
+            <span class="btn-inner">
+              <img src="Telegram.png" alt="Telegram" class="btn-icon-img">
+              <span class="btn-text">TELEGRAM</span>
+            </span>
+          </a>
+
+          <!-- CHANNEL Button -->
+          <a href="https://t.me/voco_in" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="brush-btn channel-btn"
+             aria-label="Telegram Channel">
+            <span class="btn-brush-bg"></span>
+            <span class="btn-inner">
+              <img src="Channel.png" alt="Channel" class="btn-icon-img">
+              <span class="btn-text">CHANNEL</span>
+            </span>
+          </a>
+
+        </nav>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-ambient">
+        <button id="audio-toggle" class="audio-toggle" title="Включить атмосферный звук">
+          <svg class="audio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line id="audio-muted-line" x1="23" y1="9" x2="17" y2="15"></line>
+            <line id="audio-muted-line-2" x1="17" y1="9" x2="23" y2="15"></line>
+            <path id="audio-wave-1" d="M15.54 8.46a5 5 0 0 1 0 7.07" style="display: none;"></path>
+            <path id="audio-wave-2" d="M19.07 4.93a10 10 0 0 1 0 14.14" style="display: none;"></path>
+          </svg>
+          <span class="audio-label">AMBIENCE: OFF</span>
+        </button>
+      </div>
+
+      <div class="footer-copy">
+        <span>&copy; <span id="current-year"></span> VOVNX. ALL RIGHTS RESERVED.</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
