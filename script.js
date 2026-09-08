@@ -37,7 +37,7 @@ function initParticles() {
     height = canvas.height = window.innerHeight;
   });
 
-  const PARTICLE_COUNT = Math.min(Math.floor((width * height) / 14000), 120);
+  const PARTICLE_COUNT = Math.min(Math.floor((width * height) / 28000), 45);
   const particles = [];
 
   class Particle {
@@ -48,17 +48,17 @@ function initParticles() {
     reset(initial = false) {
       this.x = Math.random() * (width + 200) - 100;
       this.y = initial ? Math.random() * height : -10;
-      this.size = Math.random() * 2.2 + 0.6;
-      this.speedY = Math.random() * 0.8 + 0.3;
-      this.speedX = Math.random() * 0.6 + 0.2;
-      this.opacity = Math.random() * 0.65 + 0.15;
+      this.size = Math.random() * 1.2 + 0.5;
+      this.speedY = Math.random() * 0.5 + 0.2;
+      this.speedX = Math.random() * 0.4 + 0.1;
+      this.opacity = Math.random() * 0.18 + 0.04;
       this.wobble = Math.random() * Math.PI * 2;
-      this.wobbleSpeed = Math.random() * 0.02 + 0.005;
+      this.wobbleSpeed = Math.random() * 0.015 + 0.005;
     }
 
     update() {
       this.wobble += this.wobbleSpeed;
-      this.x += this.speedX + Math.sin(this.wobble) * 0.3;
+      this.x += this.speedX + Math.sin(this.wobble) * 0.2;
       this.y += this.speedY;
 
       if (this.y > height + 10 || this.x > width + 100) {
@@ -69,9 +69,7 @@ function initParticles() {
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(230, 240, 255, ${this.opacity})`;
-      ctx.shadowBlur = this.size > 1.8 ? 6 : 0;
-      ctx.shadowColor = 'rgba(210, 235, 255, 0.4)';
+      ctx.fillStyle = `rgba(220, 235, 255, ${this.opacity})`;
       ctx.fill();
     }
   }
@@ -129,8 +127,7 @@ function initAmbientAudio() {
       if (mutedLine2) mutedLine2.style.display = 'none';
       if (wave1) wave1.style.display = 'inline';
       if (wave2) wave2.style.display = 'inline';
-      toggleBtn.style.borderColor = 'rgba(100, 181, 246, 0.5)';
-      toggleBtn.style.color = '#d8ecf8';
+      toggleBtn.classList.add('is-active');
     } else {
       stopWindSynth();
       isAudioPlaying = false;
@@ -139,8 +136,7 @@ function initAmbientAudio() {
       if (mutedLine2) mutedLine2.style.display = 'inline';
       if (wave1) wave1.style.display = 'none';
       if (wave2) wave2.style.display = 'none';
-      toggleBtn.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-      toggleBtn.style.color = '#c4d0dc';
+      toggleBtn.classList.remove('is-active');
     }
   });
 }
