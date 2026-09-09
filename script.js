@@ -28,6 +28,8 @@ function initMenu() {
   const toggleBtn = document.getElementById('menu-toggle');
   const overlay = document.getElementById('menu-overlay');
   const menuLinks = document.querySelectorAll('.menu-link');
+  const menuNav = overlay.querySelector('.menu-nav');
+  const aboutPanel = document.getElementById('about');
 
   if (!toggleBtn || !overlay) return;
 
@@ -40,11 +42,22 @@ function initMenu() {
   }
 
   function closeMenu() {
+    showMenu();
     toggleBtn.classList.remove('is-active');
     toggleBtn.setAttribute('aria-expanded', 'false');
     overlay.classList.remove('is-open');
     overlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+  }
+
+  function showMenu() {
+    if (menuNav) menuNav.hidden = false;
+    if (aboutPanel) aboutPanel.hidden = true;
+  }
+
+  function showAbout() {
+    if (menuNav) menuNav.hidden = true;
+    if (aboutPanel) aboutPanel.hidden = false;
   }
 
   toggleBtn.addEventListener('click', () => {
@@ -58,8 +71,13 @@ function initMenu() {
 
   // Close when clicking any link
   menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      closeMenu();
+    link.addEventListener('click', (e) => {
+      if (link.getAttribute('href') === '#about') {
+        e.preventDefault();
+        showAbout();
+      } else {
+        closeMenu();
+      }
     });
   });
 
@@ -73,7 +91,11 @@ function initMenu() {
   // Close on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
-      closeMenu();
+      if (aboutPanel && !aboutPanel.hidden) {
+        showMenu();
+      } else {
+        closeMenu();
+      }
     }
   });
 }
